@@ -1,0 +1,29 @@
+﻿<Page x:Class="DEM_1Project.OrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Заявки" Loaded="Page_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель управления -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+            <TextBox x:Name="txtSearch" Width="200" Margin="5" 
+                     TextChanged="Filter_Changed" ToolTip="Поиск по номеру, клиенту, товару..."/>
+            <ComboBox x:Name="cmbFilter" Width="150" Margin="5" 
+                      SelectionChanged="Filter_Changed" ToolTip="Фильтр по производителю товара"/>
+            <ComboBox x:Name="cmbSortField" Width="120" Margin="5" 
+                      SelectionChanged="Sort_Changed" ToolTip="Поле для сортировки"/>
+            <RadioButton x:Name="rbAsc" Content="↑ по возр." GroupName="SortOrder" Margin="5" 
+                         Checked="Sort_Changed"/>
+            <RadioButton x:Name="rbDesc" Content="↓ по убыв." GroupName="SortOrder" Margin="5" 
+                         Checked="Sort_Changed" IsChecked="True"/>
+        </StackPanel>
+
+        <!-- Таблица заказов -->
+        <DataGrid x:Name="dgOrders" Grid.Row="1" 
+                  AutoGenerateColumns="True" IsReadOnly="True" Margin="10"/>
+    </Grid>
+</Page>
